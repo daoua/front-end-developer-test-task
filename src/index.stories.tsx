@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import PricePicker from './components/PricePicker'
 import { Model } from './interfaces';
 import { prices } from './api/data';
@@ -12,9 +12,7 @@ const PriceOption: FC = () => {
   })
   console.log(chosenModel) // here would be chosenModel
 
-  const onSubmit = (model: Model) => {
-    setChosenModel(model)
-  }
+  const onSubmit = (model: Model) => setChosenModel(model);
 
   return (
     <PricePicker prices={prices} onSubmit={onSubmit} />

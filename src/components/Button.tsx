@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
+import { Button } from '../styles/styled';
 
 interface PricePickerFooterProps {
-  imagePath: string;
   children: React.ReactNode;
 }
 
-const PricePickerFooter: FC<PricePickerFooterProps> = ({ imagePath, children }) => {
+const PricePickerFooter: FC<PricePickerFooterProps> = ({ children }) => {
   return (
-    <button type="submit" className="price-picker__button">
+    <Button type="submit">
       {children}
-    </button>
+    </Button>
   )
 }
 

@@ -1,5 +1,12 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { Prices } from '../interfaces';
+import {
+  ListItem,
+  ListItemPrice,
+  ListItemLabel,
+  ListItemInput,
+  Checkbox,
+} from '../styles/styled';
 
 interface PricePickerItemProps {
   item: Prices;
@@ -9,28 +16,35 @@ interface PricePickerItemProps {
 
 const PricePickerItem: FC<PricePickerItemProps> = (props) => {
   const { item, selectedOption, handleSelectedOption} = props;
-  
+
   const handleActiveRadio = (event: React.FormEvent<HTMLInputElement>): void => {
     const { value } = event.currentTarget;
 
     handleSelectedOption(Number(value));
   }
 
+  let isSelectedOption = item.id === selectedOption;
+
   return (
-    <li key={item.id} className="price-picker__item">
-      <label htmlFor={`item${item.id}`} className="price-picker__label">
-        <input
+    <ListItem>
+      <ListItemLabel
+        htmlFor={`item${item.id}`}
+        isSelectedOption={isSelectedOption}
+      >
+        <ListItemInput
           id={`item${item.id}`}
           type="radio"
-          className="price-picker__input"
           value={item.id}
           checked={item.id === selectedOption}
           onChange={handleActiveRadio}
         />
+        <Checkbox isSelectedOption={isSelectedOption} />
         {item.type}
-      </label>
-      <span className="price-picker__price">{item.price}</span>
-    </li>
+      </ListItemLabel>
+      <ListItemPrice isSelectedOption={isSelectedOption}>
+        {item.price}
+      </ListItemPrice>
+    </ListItem>
   )
 }
 

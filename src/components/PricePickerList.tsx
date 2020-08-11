@@ -1,12 +1,7 @@
 import React, { FC } from 'react';
 import { Prices } from '../interfaces';
 import PricePickerItem from './PricePickerItem';
-import {
-  Wrapper,
-  Form,
-  Header,
-  Heading
-} from '../styles/styled';
+import { List } from '../styles/styled';
 
 interface PricePickerListProps {
   priceOptions: Prices[];
@@ -17,16 +12,17 @@ interface PricePickerListProps {
 const PricePickerList: FC<PricePickerListProps> = (props) => {
   const { priceOptions, selectedOption, handleSelectedOption} = props;
   return (
-    <ul className="price-picker__list">
+    <List className="price-picker__list">
       {priceOptions.map(item => {
         return (
           <PricePickerItem
+            key={item.id}
             item={item}
             selectedOption={selectedOption}
             handleSelectedOption={handleSelectedOption}
           />
         )})}
-    </ul>
+    </List>
   )
 }
 

@@ -6,7 +6,6 @@ import {
   Wrapper,
   Form,
   Header,
-  Heading
 } from '../styles/styled';
 
 interface PricePickerProps {
@@ -35,18 +34,18 @@ const PricePicker: FC<PricePickerProps> = ({ prices, onSubmit}) => {
   };
 
   return (
-    <Wrapper className="price-picker__wrapper">
-      <Form className="price-picker" onSubmit={handleSubmit}>
-        <Header className="price-picker__heading-wrapper">
-          <Heading className="price-picker__type-heading">Тип</Heading>
-          <Heading className="price-picker__price-heading">Ціна</Heading>
+    <Wrapper>
+      <Form onSubmit={handleSubmit}>
+        <Header>
+          <span>Тип</span>
+          <span>Ціна</span>
         </Header>
         <PricePickerList
           priceOptions={priceOptions}
           selectedOption={selectedOption}
           handleSelectedOption={handleSelectedOption}
         />
-        <PricePickerFooter currentPrice={currentModel?.type} />
+        <PricePickerFooter currentPrice={currentModel?.price} />
       </Form>
     </Wrapper>
   )
